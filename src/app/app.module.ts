@@ -7,18 +7,22 @@ import { AppComponent } from './app.component';
 import { TodosComponent } from './todos/todos.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { TodosFilterPipe } from './shared/todos-filter.pipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodosComponent,
-    TodoFormComponent
+    TodoFormComponent,
+    TodosFilterPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    TodosFilterPipe
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
